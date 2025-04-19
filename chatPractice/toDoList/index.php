@@ -37,7 +37,9 @@
         }
 
         .task {
-            display: block;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
             font-size: 1.8rem;
             font-style: italic;
             margin: 10px 20px;
@@ -46,7 +48,26 @@
             background-color: rgb(240, 229, 107);
             border: solid 1px black;
         }
+
+        .task :last-child {
+            margin-left: auto !important;
+        }
     </style>
+    <script>
+        function toggleCheck() {
+            let checkedBox = document.getElementsById("checked-box");
+            let uncheckedBox = document.getElementsById("unchecked-box");
+
+            if (checkedBox.style == "display = none;") {
+                uncheckedBox.style = "display = none;";
+                checkedBox.style = "display = show;";
+            } else {
+                checkedBox.style = "display = none;";
+                uncheckedBox.style = "display = show;";
+            }
+
+        }
+    </script>
 </head>
 
 <body>
@@ -54,7 +75,11 @@
     <div class="task-container" id="task-container">
         <div class="title">To-Do List</div>
         <div class="task">
-            <div class="taskContent">Wash the dishes<span class="taskCompleted"><input type="checkbox"></span></div>
+            <div class="task-content">Wash the dishes</div>
+            <div class="task-completed"><a href="#" onclick="toggleCheck()"><img id="checked-box"
+                        src="/checkbox_unchecked.svg" alt=""><img id="unchecked-box" src="/checkbox_checked.svg" alt=""
+                        style="display: none;"></>
+            </div>
 
         </div>
     </div>
